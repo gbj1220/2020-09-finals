@@ -1,43 +1,13 @@
-// // Your code goes below:
-const makeParagraph = (strArr) => {
-  return strArr.join(' ')
-}
+const makeParagraph = (str) => str.join(" ")
 
-const cipher = (str) => {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyza'
-  let result = ''
-  for (const char of str) {
-    const location = alphabet.indexOf(char)
-    const next = (location +1)  
-    result += alphabet[next]
-  }
-  return result
-}
-
-
-// const totalScore = (items, bonus) => {
-//   let result = 0
-//   for (items of items) {
-//     if (items.multiplier) {
-//       result += items.score * items.multiplier
-//     } else if (items.score) {
-//       result += items.score
-//     } else if (bonus === undefined ) {
-//       bonus = 0
-//     }
-//   } return result + bonus   
-// }
-
-// //Corrected Version
 const totalScore = (levels, bonus) => {
   if (bonus === undefined) {
     bonus = 0
   }
-
-  let score = 0;
+  let score = 0
   for (const level of levels) {
     let currentScore = level.score;
-    if(level.multiplier) {
+    if (level.multiplier) {
       currentScore *= level.multiplier
     }
     score += currentScore
@@ -45,90 +15,78 @@ const totalScore = (levels, bonus) => {
   return score + bonus
 }
 
-// const womensAverageSalary = (obj) => {
-//   let result = 0
-//   for (const property of obj) {
-//     if (property.gender === 'female') {
-//       result += property.salary
-//     }
-//   } return result / obj.length
-// }
+const cipher = (str) => {
+  let result = ''
+  let alphabet = 'abcdefghijklmnopqrstuvwxyza'
+  for (const char of str) {
+    const current = alphabet.indexOf(char)
+    const next = current + 1
+    result += alphabet[next]
+  }
+  return result
+}
 
-// //Corrected Version
-const womensAverageSalary = (people) => {
-  let sum = 0
-  let count = 0
-  for (const person of people) {
+const womensAverageSalary = (obj) => {
+  let sum = 0;
+  let count = 0;
+  for (const person of obj) {
     if (person.gender === 'female') {
-      sum += person.salary
-      count++
+      sum += person.salary;
+      count++;
     }
   }
   return sum / count
 }
 
+// const notMarried = (people) => people.filter((person) => person.status !== 'married')
 
-// let newArr = []
-// const notMarried = (obj) => {
-//   for (const people of obj) {
-//     if (people.status !== 'married' || people.status === 'divorced' || people.status === 'deceased' || people.status === 'widowed') {
-//       newArr.push(people)
-//     }
-//   } return newArr
-// }
+const notMarried = (people) => {
+  const newArr = [];
+  for (const person of people) {
+    if (person.status !== 'married') {
+      newArr.push(person)
+    }
+  } return newArr
+}
 
-// //Corrected Version
-const notMarried = (people) => people.filter((person) => person.status !== 'married')
+const addToMultiDigitNumbers = (numToAdd, numToAddTo) => {
+  let newArr = [];
+  for (let number of numToAddTo) {
+    number = Number(number)
+    if (number < 10) {
+      newArr.push(number.toString())
+    } else {
+      newArr.push((number + numToAdd).toString())
+    }
+  }
+  return newArr git test 
+}
 
-
-// const Faqtory = function () {
-//   const obj = {
-//     questions: [], 
-//   }
-//   return obj
-// }
-
-//Corrected Version
 const Faqtory = () => {
   return {
     questions: [],
 
-    addQuestion: function(questionText) {
+    addQuestion(questionText) {
       const question = {
         text: questionText,
-        answered: false, 
-        id: this.questions.length 
+        answered: false,
+        id: this.questions.length,
       }
       this.questions.push(question)
+    },
+
+    answerQuestion(num, str) {
+      
     }
   }
 }
 
 
-// let answer = ' '
-// const addToMultiDigitNumbers = (numToAdd, numToAddTo) => {
-//   for (nums of numToAddTo) {
-//     if (nums.length >= 1) {
-//     }
-//   }
-//   return nums + numToAdd 
-// }
-
-//Corrected Version
-const addToMultiDigitNumbers = function(addend, numbers) {
-  const result = []
-  for (let number of numbers) {
-    number = Number(number)
-    if (number < 10) {
-      result.push(number.toString())
-    } else {
-      result.push((number + addend).toString())
-    }
-  }
-  return result
-}
-
-
+const testFaqtory = Faqtory();
+testFaqtory.addQuestion('some question')
+console.log(testFaqtory)
+testFaqtory.answerQuestion(1, 'some answer')
+console.log(testFaqtory)
 // Our code goes below... DO NOT TOUCH.
 
 
